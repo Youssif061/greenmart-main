@@ -17,7 +17,6 @@ This project focuses on clean and responsive design without full backend integra
 <p float="left">
   <img src="screenshots/register_screen.jpeg" width="30%" />
   <img src="screenshots/verify_mobile_screen.jpeg" width="30%" />
-  <img src="screenshots/verify_code_screen.jpeg" width="30%" />
 </p>
 
 <p float="left">
@@ -115,7 +114,6 @@ This project focuses on clean and responsive design without full backend integra
 <p float="left">
   <img src="screenshots/register_screen.jpeg" width="30%" />
   <img src="screenshots/verify_mobile_screen.jpeg" width="30%" />
-  <img src="screenshots/verify_code_screen.jpeg" width="30%" />
 </p>
 
 <p float="left">
@@ -142,7 +140,6 @@ This project focuses on clean and responsive design without full backend integra
 <p float="left">
   <img src="screenshots/sheet_modal_chechout_to_cart_screen.jpeg" width="30%" />
   <img src="screenshots/order_accepted_screen.jpeg" width="30%" />
-  <img src="screenshots/log_out_screen.jpeg" width="30%" />
 </p>
 
 ---
