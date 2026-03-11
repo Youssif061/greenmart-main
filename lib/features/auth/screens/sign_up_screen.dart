@@ -1,0 +1,151 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:greenmart/core/constants/app_images.dart';
+import 'package:greenmart/core/functions/navigation.dart';
+import 'package:greenmart/core/styles/color.dart';
+import 'package:greenmart/core/styles/text_style.dart';
+import 'package:greenmart/core/widgets/custom_password_form_field.dart';
+import 'package:greenmart/core/widgets/custom_text_form_field.dart';
+import 'package:greenmart/core/widgets/primary_button.dart';
+
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+            ).copyWith(top: 10),
+
+            child: Form(
+              key: formKey,
+              autovalidateMode: AutovalidateMode.onUnfocus,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Align(
+                    alignment: AlignmentGeometry.center,
+                    child: SvgPicture.asset(AppImages.carrotSvg),
+                  ),
+                  SizedBox(height: 40),
+                  Text('Sign Up', style: TextStyles.title),
+                  SizedBox(height: 16),
+                  Text(
+                    'Enter your credentials to continue',
+                    style: TextStyles.caption.copyWith(
+                      color: AppColors.greyColor,
+                    ),
+                  ),
+                  SizedBox(height: 40),
+                  Text(
+                    'Name',
+                    style: TextStyles.caption.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.greyColor,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  CustomTextFormField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your name';
+                      }
+                      return null;
+                    },
+                    hintText: 'sohaib hisham',
+                  ),
+                  SizedBox(height: 18),
+                  Text(
+                    'Email',
+                    style: TextStyles.caption.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.greyColor,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  CustomTextFormField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your email';
+                      } else if (!value.contains('@')) {
+                        return 'Please enter a valid email';
+                      }
+                      return null;
+                    },
+                    hintText: 'example@gmail.com',
+                  ),
+                  SizedBox(height: 18),
+                  Text(
+                    'Password',
+                    style: TextStyles.caption.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.greyColor,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+
+                  CustomPasswordFormField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your password';
+                      } else if (value.length < 6) {
+                        return 'Password must be at least characters';
+                      }
+                      return null;
+                    },
+                    hintText: '*************',
+                  ),
+
+                  SizedBox(height: 32),
+                  PrimaryButton(
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {}
+                    },
+                    title: 'Sign Up',
+                  ),
+                  SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Already have an account? ",
+                        style: TextStyles.caption.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      TextButton(
+                        style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                        onPressed: () {
+                          popFrom(context);
+                        },
+                        child: Text(
+                          "Login",
+                          style: TextStyles.caption.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.primaryColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
